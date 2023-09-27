@@ -25,7 +25,7 @@ class Agences
     {
         $this->httpRequest=HttpRequest::getCachedObject();
 
-        $config=new Dbconfig(dbHostname: "localhost",dbName: "milleniumhorizon",dbUsername: "root",dbUserPassword: "");
+        $config=new Dbconfig(dbHostname: "localhost",dbName: "milleniumpayroll",dbUsername: "root",dbUserPassword: "");
         $this->dbconnect=new Dbconnect(dbconfig: $config);
 
     }
