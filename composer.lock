@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "813424231c28a0669bb8c0b370fb735c",
+    "content-hash": "69e369cb84ec274bc2fc0ab34745f062",
     "packages": [
         {
             "name": "curl/curl",
@@ -108,12 +108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RT-Group-Tech/http-router.git",
-                "reference": "372e4aed987776fdd54d6b789d6461c16e458eb1"
+                "reference": "f579c1a51fb1fc7bd87b95373cfdce09e9349d90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RT-Group-Tech/http-router/zipball/372e4aed987776fdd54d6b789d6461c16e458eb1",
-                "reference": "372e4aed987776fdd54d6b789d6461c16e458eb1",
+                "url": "https://api.github.com/repos/RT-Group-Tech/http-router/zipball/f579c1a51fb1fc7bd87b95373cfdce09e9349d90",
+                "reference": "f579c1a51fb1fc7bd87b95373cfdce09e9349d90",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "issues": "https://github.com/RT-Group-Tech/http-router/issues",
                 "source": "https://github.com/RT-Group-Tech/http-router/tree/master"
             },
-            "time": "2023-09-27T14:36:39+00:00"
+            "time": "2023-09-27T15:13:20+00:00"
         },
         {
             "name": "rtgroup/payroll-adresses",
@@ -190,7 +190,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=8.0"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

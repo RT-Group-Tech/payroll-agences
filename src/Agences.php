@@ -21,9 +21,9 @@ class Agences
 
     private Dbconnect $dbconnect;
 
-    public function __construct(HttpRequest $httpRequest)
+    public function __construct()
     {
-        $this->httpRequest=$httpRequest;
+        $this->httpRequest=HttpRequest::getCachedObject();
 
         $config=new Dbconfig(dbHostname: "localhost",dbName: "milleniumhorizon",dbUsername: "root",dbUserPassword: "");
         $this->dbconnect=new Dbconnect(dbconfig: $config);
