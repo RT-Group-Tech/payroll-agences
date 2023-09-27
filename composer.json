@@ -1,0 +1,21 @@
+{
+    "name": "rtgroup/payroll-agences",
+    "description": "Composation de gestion manipulation des agences",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Rtgroup\\PayrollAgences\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chris Tenday",
+            "email": "ctenday@gmail.com"
+        }
+    ],
+    "require": {
+        "rtgroup/dbconnect": "dev-master",
+        "rtgroup/payroll-adresses": "dev-master",
+        "rtgroup/http-router": "dev-master"
+    }
+}

@@ -1,0 +1,99 @@
+<?php
+namespace Rtgroup\PayrollAgences;
+
+use Rtgroup\Dbconnect\Dbconfig;
+use Rtgroup\Dbconnect\Dbconnect;
+use Rtgroup\HttpRouter\DataLoader;
+use Rtgroup\HttpRouter\HttpRequest;
+use Rtgroup\PayrollAdresses\Adresse;
+
+class Agences
+{
+    /** herite du DataLoader pour etre en mesure de charger les données de reponse à partir de ce composant */
+    use DataLoader;
+
+    private $libelle;
+    private $userId=null;
+
+    private $adressId=null;
+
+    private HttpRequest $httpRequest;
+
+    private Dbconnect $dbconnect;
+
+    public function __construct(HttpRequest $httpRequest)
+    {
+        $this->httpRequest=$httpRequest;
+
+        $config=new Dbconfig(dbHostname: "localhost",dbName: "milleniumhorizon",dbUsername: "root",dbUserPassword: "");
+        $this->dbconnect=new Dbconnect(dbconfig: $config);
+
+    }
+
+    /**
+     * Ajouter une agence dans la db.
+     * @return void
+     * @throws \Exception
+     */
+    public function add()
+    {
+        if(!$this->httpRequest->isPost())
+        {
+            throw new \Exception("forbiden request.",404);
+        }
+
+        /**
+         * Verifier les données obligatoires.
+         */
+        HttpRequest::checkRequiredData("libelle");
+        HttpRequest::checkRequiredData("province");
+        HttpRequest::checkRequiredData("commune");
+        HttpRequest::checkRequiredData("quartier");
+        HttpRequest::checkRequiredData("avenue");
+        HttpRequest::checkRequiredData("numero");
+        HttpRequest::checkRequiredData("user_id");
+
+        $this->setUser($_POST['user_id']);
+
+        $this->setAdresse(province: $_POST['province'],commune: $_POST['commune'],quartier: $_POST['quartier'],avenue: $_POST['avenue'],numero: $_POST['numero']);
+
+        $id=$this->save();
+
+        $this->loadData("reponse",array("status"=>"success",array("agence_id"=>$id)));
+
+    }
+
+    private function setUser($userId)
+    {
+        //TODO: Check userId.
+        $this->userId=$userId;
+    }
+
+    /**
+     * Adresse de l'agence.
+     * @param $province
+     * @param $commune
+     * @param $avenue
+     * @param $numero
+     * @return void
+     */
+    private function setAdresse($province,$commune,$quartier,$avenue,$numero)
+    {
+        $adresse=new Adresse(province:$province,commune: $commune,quartier: $quartier,avenue: $avenue,numero: $numero);
+        $this->adressId=$adresse->save();
+    }
+
+    /**
+     * Save agence.
+     * @return array|bool|int|string
+     */
+    private function save()
+    {
+        $data['adresse_id']=$this->adressId;
+        $data['libelle']=$this->libelle;
+        $data['user_id']=$this->userId;
+        $data['date_enregistrement']=time();
+
+        return $this->dbconnect->insert($data);
+    }
+}

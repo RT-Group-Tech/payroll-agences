@@ -1,0 +1,196 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "813424231c28a0669bb8c0b370fb735c",
+    "packages": [
+        {
+            "name": "curl/curl",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-mod/curl.git",
+                "reference": "c4f8799c471e43b7c782c77d5c6e178d0465e210"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-mod/curl/zipball/c4f8799c471e43b7c782c77d5c6e178d0465e210",
+                "reference": "c4f8799c471e43b7c782c77d5c6e178d0465e210",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^5.6 | ^7.0 | ^8.0"
+            },
+            "require-dev": {
+                "yoast/phpunit-polyfills": "^0.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Curl": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "php-curl-class",
+                    "homepage": "https://github.com/php-curl-class"
+                },
+                {
+                    "name": "Hassan Amouhzi",
+                    "email": "hassan@anezi.net",
+                    "homepage": "http://hassan.amouhzi.com"
+                },
+                {
+                    "name": "user52",
+                    "homepage": "https://github.com/user52"
+                }
+            ],
+            "description": "cURL class for PHP",
+            "homepage": "https://github.com/php-mod/curl",
+            "keywords": [
+                "curl",
+                "dot"
+            ],
+            "support": {
+                "issues": "https://github.com/php-mod/curl/issues",
+                "source": "https://github.com/php-mod/curl/tree/2.5.0"
+            },
+            "time": "2022-12-14T13:27:59+00:00"
+        },
+        {
+            "name": "rtgroup/dbconnect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RT-Group-Tech/dbconnect.git",
+                "reference": "5f75e457d9e522c9b080526e83e9c098ad015756"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RT-Group-Tech/dbconnect/zipball/5f75e457d9e522c9b080526e83e9c098ad015756",
+                "reference": "5f75e457d9e522c9b080526e83e9c098ad015756",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rtgroup\\Dbconnect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Chris Tenday",
+                    "email": "ctenday@gmail.com"
+                }
+            ],
+            "description": "Bibliothèque pour la gestion de la base des données et actions sql",
+            "support": {
+                "issues": "https://github.com/RT-Group-Tech/dbconnect/issues",
+                "source": "https://github.com/RT-Group-Tech/dbconnect/tree/master"
+            },
+            "time": "2023-09-27T12:21:04+00:00"
+        },
+        {
+            "name": "rtgroup/http-router",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RT-Group-Tech/http-router.git",
+                "reference": "1541c065665807c60bc6a4af4ae1ddee8dae03a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RT-Group-Tech/http-router/zipball/1541c065665807c60bc6a4af4ae1ddee8dae03a2",
+                "reference": "1541c065665807c60bc6a4af4ae1ddee8dae03a2",
+                "shasum": ""
+            },
+            "require": {
+                "curl/curl": "^2.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rtgroup\\HttpRouter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Chris Tenday",
+                    "email": "ctenday@gmail.com"
+                }
+            ],
+            "description": "Composant de gestion & routage de requete http",
+            "support": {
+                "issues": "https://github.com/RT-Group-Tech/http-router/issues",
+                "source": "https://github.com/RT-Group-Tech/http-router/tree/master"
+            },
+            "time": "2023-09-27T14:29:59+00:00"
+        },
+        {
+            "name": "rtgroup/payroll-adresses",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RT-Group-Tech/payroll-adresses.git",
+                "reference": "bf77a21e3d8becb82f46aa69d0c479459074679e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RT-Group-Tech/payroll-adresses/zipball/bf77a21e3d8becb82f46aa69d0c479459074679e",
+                "reference": "bf77a21e3d8becb82f46aa69d0c479459074679e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "rtgroup/dbconnect": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rtgroup\\PayrollAdresses\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Chris Tenday",
+                    "email": "ctenday@gmail.com"
+                }
+            ],
+            "description": "Composant pour la gestion des adresses",
+            "support": {
+                "issues": "https://github.com/RT-Group-Tech/payroll-adresses/issues",
+                "source": "https://github.com/RT-Group-Tech/payroll-adresses/tree/master"
+            },
+            "time": "2023-09-27T11:51:31+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "rtgroup/dbconnect": 20,
+        "rtgroup/payroll-adresses": 20,
+        "rtgroup/http-router": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}
