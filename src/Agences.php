@@ -28,6 +28,8 @@ class Agences
         $config=new Dbconfig(dbHostname: "localhost",dbName: "milleniumpayroll",dbUsername: "root",dbUserPassword: "");
         $this->dbconnect=new Dbconnect(dbconfig: $config);
 
+        $this->dbconnect->setTable("agences");
+
     }
 
     /**
@@ -55,11 +57,13 @@ class Agences
 
         $this->setUser($_POST['user_id']);
 
+        $this->libelle=$_POST['libelle'];
+
         $this->setAdresse(province: $_POST['province'],commune: $_POST['commune'],quartier: $_POST['quartier'],avenue: $_POST['avenue'],numero: $_POST['numero']);
 
         $id=$this->save();
 
-        $this->loadData("reponse",array("status"=>"success",array("agence_id"=>$id)));
+        $this->loadData("reponse",array("status"=>"success","agence_id"=>$id));
 
     }
 
@@ -89,10 +93,12 @@ class Agences
      */
     private function save()
     {
-        $data['adresse_id']=$this->adressId;
+        $data['adresse_id']=(int)$this->adressId;
         $data['libelle']=$this->libelle;
-        $data['user_id']=$this->userId;
+        $data['user_id']=(int)$this->userId;
         $data['date_enregistrement']=time();
+
+        //print_r($data); exit();
 
         return $this->dbconnect->insert($data);
     }
