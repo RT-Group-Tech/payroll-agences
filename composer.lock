@@ -70,12 +70,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RT-Group-Tech/dbconnect.git",
-                "reference": "5f75e457d9e522c9b080526e83e9c098ad015756"
+                "reference": "781a14f4d392ab4f7e2b667d28d8d96537891b46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RT-Group-Tech/dbconnect/zipball/5f75e457d9e522c9b080526e83e9c098ad015756",
-                "reference": "5f75e457d9e522c9b080526e83e9c098ad015756",
+                "url": "https://api.github.com/repos/RT-Group-Tech/dbconnect/zipball/781a14f4d392ab4f7e2b667d28d8d96537891b46",
+                "reference": "781a14f4d392ab4f7e2b667d28d8d96537891b46",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "issues": "https://github.com/RT-Group-Tech/dbconnect/issues",
                 "source": "https://github.com/RT-Group-Tech/dbconnect/tree/master"
             },
-            "time": "2023-09-27T12:21:04+00:00"
+            "time": "2023-10-03T17:33:10+00:00"
         },
         {
             "name": "rtgroup/http-router",
@@ -108,16 +108,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RT-Group-Tech/http-router.git",
-                "reference": "f579c1a51fb1fc7bd87b95373cfdce09e9349d90"
+                "reference": "5c1f873d3e076f40b911e4ef6bd97d2c0735a915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RT-Group-Tech/http-router/zipball/f579c1a51fb1fc7bd87b95373cfdce09e9349d90",
-                "reference": "f579c1a51fb1fc7bd87b95373cfdce09e9349d90",
+                "url": "https://api.github.com/repos/RT-Group-Tech/http-router/zipball/5c1f873d3e076f40b911e4ef6bd97d2c0735a915",
+                "reference": "5c1f873d3e076f40b911e4ef6bd97d2c0735a915",
                 "shasum": ""
             },
             "require": {
-                "curl/curl": "^2.5"
+                "curl/curl": "^2.5",
+                "php": ">=8.0"
             },
             "default-branch": true,
             "type": "library",
@@ -138,7 +139,7 @@
                 "issues": "https://github.com/RT-Group-Tech/http-router/issues",
                 "source": "https://github.com/RT-Group-Tech/http-router/tree/master"
             },
-            "time": "2023-09-27T15:13:20+00:00"
+            "time": "2023-10-02T15:38:00+00:00"
         },
         {
             "name": "rtgroup/payroll-adresses",

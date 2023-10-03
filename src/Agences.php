@@ -102,4 +102,20 @@ class Agences
 
         return $this->dbconnect->insert($data);
     }
+
+    /**
+     * Recuperer les agents d'une agence.
+     * @param $agenceId
+     * @return void
+     */
+    public function getAllAgents($agenceId)
+    {
+        $agents=$this->dbconnect->selectJoin(table: "affectations",cols: array("affectation_id","service_id","fonction_id","date_affectation"))
+            ->selectJoin(table: "services",cols: array("nom=>service","libelle=>libelle_service"))
+            ->selectJoin(table: "fonctions",cols: array("libelle=>fonction"))
+            ->joinWhere(table: "affectations",col1: "agence_id",logicOperator1: "=",val1: $agenceId,col2: "affectation_status",logicOperator2: "=",val2: "actif")
+            ->executeJoin();
+
+        return $agents;
+    }
 }
