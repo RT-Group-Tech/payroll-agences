@@ -106,7 +106,7 @@ class Agences
     /**
      * Recuperer les agents d'une agence.
      * @param $agenceId
-     * @return void
+     * @return array|bool|int|string
      */
     public function getAllAgents($agenceId)
     {
