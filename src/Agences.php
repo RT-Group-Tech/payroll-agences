@@ -25,9 +25,12 @@ class Agences
     {
         $this->httpRequest=HttpRequest::getCachedObject();
 
-        $config=new Dbconfig(dbHostname: "localhost",dbName: "milleniumpayroll",dbUsername: "root",dbUserPassword: "");
-        $this->dbconnect=new Dbconnect(dbconfig: $config);
+        /**
+         * Acceder à la config global.
+         */
+        global $dbconnect;
 
+        $this->dbconnect=$dbconnect;
         $this->dbconnect->setTable("agences");
 
     }
