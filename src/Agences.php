@@ -96,6 +96,7 @@ class Agences
      */
     private function save()
     {
+        $this->dbconnect->setTable("agences");
         $data['adresse_id']=(int)$this->adressId;
         $data['libelle']=$this->libelle;
         $data['user_id']=(int)$this->userId;
