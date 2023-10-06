@@ -113,12 +113,14 @@ class Agences
      */
     public function getAllAgents($agenceId)
     {
-        $agents=$this->dbconnect->selectJoin(table: "affectations",cols: array("affectation_id","service_id","fonction_id","date_affectation"))
-            ->selectJoin(table: "services",cols: array("nom=>service","libelle=>libelle_service"))
-            ->selectJoin(table: "fonctions",cols: array("libelle=>fonction"))
+        /*$agents=$this->dbconnect->selectJoin(table: "affectations",cols: array("affectation_id","service_id","fonction_id","date_affectation"))
+            ->selectJoin(table: "services",cols: array("nom","libelle"))
+            ->selectJoin(table: "fonctions",cols: array("libelle"))
+            ->join(table_1: "affectations",table_2: "services",onCol: "service_id")
+            ->join(table_1: "affectations",table_2: "fonctions",onCol: "fonction_id")
             ->joinWhere(table: "affectations",col1: "agence_id",logicOperator1: "=",val1: $agenceId,col2: "affectation_status",logicOperator2: "=",val2: "actif")
             ->executeJoin();
 
-        return $agents;
+        return $agents;*/
     }
 }
