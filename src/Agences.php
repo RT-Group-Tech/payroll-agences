@@ -65,8 +65,23 @@ class Agences
         $this->setAdresse(province: $_POST['province'],commune: $_POST['commune'],quartier: $_POST['quartier'],avenue: $_POST['avenue'],numero: $_POST['numero']);
 
         $id=$this->save();
+        if($id>0)
+        {
+            $result=[
+                "agence_id" => $id,
+                "status"     => "success"
+            ];
+        }
+        else
+        {
+            $result=[
+                "agence_id" => 0,
+                "status"     => "failed"
+            ];
+        }
+        return $result;
 
-        $this->loadData("reponse",array("status"=>"success","agence_id"=>$id));
+       // $this->loadData("reponse",array("status"=>"success","agence_id"=>$id));
 
     }
 
