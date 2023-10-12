@@ -147,7 +147,8 @@ class Agences
      * @param $agenceId
      * @return array|bool|int|string
      */
-    public function addDispositifs(){
+    public function addDispositifs()
+    {
 
         // HttpRequest::checkRequiredData("agent_id"); //TODO: check.
         HttpRequest::checkRequiredData("libelle"); //TODO:check
