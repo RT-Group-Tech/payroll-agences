@@ -65,12 +65,14 @@ class Agences
         $this->setAdresse(province: $_POST['province'],commune: $_POST['commune'],quartier: $_POST['quartier'],avenue: $_POST['avenue'],numero: $_POST['numero']);
 
         $id=$this->save();
+
         if($id>0)
         {
             $result=[
                 "agence_id" => $id,
                 "status"     => "success"
             ];
+            return $result;
         }
         else
         {
@@ -78,8 +80,9 @@ class Agences
                 "agence_id" => 0,
                 "status"     => "failed"
             ];
+            return $result;
         }
-        return $result;
+       
 
        // $this->loadData("reponse",array("status"=>"success","agence_id"=>$id));
 
@@ -138,5 +141,67 @@ class Agences
             ->executeJoin();
 
         return $agents;*/
+    }
+     /**
+     * Enregistrer les dispositifs par agence
+     * @param $agenceId
+     * @return array|bool|int|string
+     */
+    public function addDispositifs(){
+
+        // HttpRequest::checkRequiredData("agent_id"); //TODO: check.
+        HttpRequest::checkRequiredData("libelle"); //TODO:check
+        HttpRequest::checkRequiredData("serie"); //TODO: check.
+        HttpRequest::checkRequiredData("adresse_ip"); //TODO: check.
+        HttpRequest::checkRequiredData("user_id");
+        HttpRequest::checkRequiredData("agence_id");
+
+        $data['libelle']=$_POST['libelle'];
+        $data['serie']=$_POST['serie'];
+        $data['adresse_ip']=$_POST['adresse_ip'];
+        $data['user_id']=$_POST['user_id'];
+        $data['date_enregistrement']=time();
+
+        $this->dbconnect->setTable("dispositifs");
+        $dispositif_id=$this->dbconnect->insert($data);
+
+        $id=$this->addAgenceDispositifs($_POST['agence_id'],$dispositif_id,$_POST['user_id']);
+
+        if($id)
+        {
+            $result=[
+                "agence_dipositif_id" => $id,
+                "status"     => "success"
+            ];
+        return $result;
+        }
+       
+            $result=[
+                "affectation_id" => 0,
+                "status"     => "failed"
+            ];
+
+        return $result;
+    }
+    /**
+     * Enregistrer les agences dispositifs
+     * @param 
+     * @return array|bool|int|string
+     */
+    public function addAgenceDispositifs($agence_id,$dispositif_id,$user_id){
+        
+        $data['agence_id']=$agence_id;
+        $data['dispositif_id']=$dispositif_id;
+        $data['user_id']=$user_id;
+        $data['date_enregistrement']=time();
+
+        $this->dbconnect->setTable("agence_dispositifs");
+        $id=$this->dbconnect->insert($data);
+        
+        if($id)
+        {
+            return $id;
+        }
+        return null;
     }
 }
