@@ -188,20 +188,62 @@ class Agences
      * @param 
      * @return array|bool|int|string
      */
-    public function addAgenceDispositifs($agence_id,$dispositif_id,$user_id){
-        
-        $data['agence_id']=$agence_id;
-        $data['dispositif_id']=$dispositif_id;
-        $data['user_id']=$user_id;
-        $data['date_enregistrement']=time();
+    public function addAgenceDispositifs($agence_id,$dispositif_id,$user_id)
+    {
+
+        $data['agence_id'] = $agence_id;
+        $data['dispositif_id'] = $dispositif_id;
+        $data['user_id'] = $user_id;
+        $data['date_enregistrement'] = time();
 
         $this->dbconnect->setTable("agence_dispositifs");
-        $id=$this->dbconnect->insert($data);
-        
-        if($id)
-        {
+        $id = $this->dbconnect->insert($data);
+
+        if ($id) {
             return $id;
         }
         return null;
+    }
+
+    /**
+     * @param $returnData
+     * @return array|bool|int|string|null
+     * @throws \Exception
+     */
+    public function getAll($returnData=false)
+    {
+        $this->dbconnect->setTable("agences");
+        $this->dbconnect->where(col1: "agence_status",logicOperator1: "=",val1: "actif");
+        $this->dbconnect->select();
+
+        $agences=$this->dbconnect->selectJoin(table: "agences",cols: array("agence_id","libelle","date_enregistrement"))
+            ->selectJoin(table: "adresses",cols: array("adresse_id","province","commune","quartier","numero"))
+            ->join(table_1: "agences",table_2: "adresses",onCol: "adresse_id")
+            ->executeJoin();
+
+        /***
+         * Format date création agence.
+         */
+        for($i=0; $i<count($agences); $i++)
+        {
+            $agences[$i]['date_enregistrement']=date("d/m/Y",$agences[$i]['date_enregistrement']);
+        }
+
+        if($returnData)
+        {
+            /**
+             * Retourner les données
+             */
+            return $agences;
+        }
+        else
+        {
+
+            /**
+             * Charger les données au frontend.
+             */
+            $this->loadData("agences",$agences);
+            return null;
+        }
     }
 }
