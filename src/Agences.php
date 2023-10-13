@@ -128,20 +128,49 @@ class Agences
     /**
      * Recuperer les agents d'une agence.
      * @param $agenceId
-     * @return array|bool|int|string
      */
     public function getAllAgents($agenceId)
     {
-        /*$agents=$this->dbconnect->selectJoin(table: "affectations",cols: array("affectation_id","service_id","fonction_id","date_affectation"))
-            ->selectJoin(table: "services",cols: array("nom","libelle"))
-            ->selectJoin(table: "fonctions",cols: array("libelle"))
-            ->join(table_1: "affectations",table_2: "services",onCol: "service_id")
-            ->join(table_1: "affectations",table_2: "fonctions",onCol: "fonction_id")
-            ->joinWhere(table: "affectations",col1: "agence_id",logicOperator1: "=",val1: $agenceId,col2: "affectation_status",logicOperator2: "=",val2: "actif")
-            ->executeJoin();
 
-        return $agents;*/
+        /**
+         * Get all affectations.
+         */
+        $this->dbconnect->setTable("affectations");
+        $this->dbconnect->where("agence_id","=",$agenceId,"AND","affectation_status","=","actif");
+        $affectations=$this->dbconnect->select();
+
+        $agentsIds=array();
+        for($i=count($affectations)-1; $i>=0; $i--)
+        {
+            /**
+             * Ne consider que la dernière affectation de chaque agent.
+             */
+            if(!in_array($affectations[$i]['agent_id'],$agentsIds))
+            {
+                $agentsIds[]=$affectations[$i]['agent_id'];
+            }
+        }
+
+        /**
+         * Get agents data.
+         */
+        $this->dbconnect->setTable("agents");
+        $allAgents=array();
+        for($i=0; $i<count($agentsIds); $i++)
+        {
+            $this->dbconnect->where("agent_id","=",$agentsIds[$i]);
+            $a=$this->dbconnect->select();
+            if($a)
+            {
+                $allAgents[]=$a[0];
+            }
+
+        }
+
+        return $allAgents;
     }
+
+
      /**
      * Enregistrer les dispositifs par agence
      * @param $agenceId
