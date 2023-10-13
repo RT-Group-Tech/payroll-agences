@@ -135,11 +135,19 @@ class Agences
         /**
          * Get all affectations.
          */
-        $this->dbconnect->setTable("affectations");
-        $this->dbconnect->where("agence_id","=",$agenceId,"AND","affectation_status","=","actif");
-        $affectations=$this->dbconnect->select();
+
+        $affectations=$this->dbconnect->selectJoin(table: "agents",cols: array("agent_id","nom","postnom","prenom","matricule","nationalite","date_naissance","adresse_id","sexe","etat_civil","date_engagement","nbre_enfant","date_enregistrement"))
+            ->selectJoin(table: "affectations",cols: array("affectation_id","service_id","fonction_id","date_affectation"))
+            ->selectJoin(table: "services",cols: array("nom=>service","libelle=>libelle_service"))
+            ->selectJoin(table: "fonctions",cols: array("libelle=>fonction"))
+            ->join(table_1: "agents",table_2: "affectations",onCol: "agent_id")
+            ->join(table_1: "affectations",table_2: "services",onCol: "service_id")
+            ->join(table_1: "affectations",table_2: "fonctions",onCol: "fonction_id")
+            ->joinWhere(table: "affectations",col1: "agence_id",logicOperator1: "=",val1: $agenceId)
+            ->executeJoin();
 
         $agentsIds=array();
+        $agents=[];
         for($i=count($affectations)-1; $i>=0; $i--)
         {
             /**
@@ -148,8 +156,11 @@ class Agences
             if(!in_array($affectations[$i]['agent_id'],$agentsIds))
             {
                 $agentsIds[]=$affectations[$i]['agent_id'];
+                $agents[]=$affectations[$i];
             }
         }
+
+        return $agents;
 
         /**
          * Get agents data.
