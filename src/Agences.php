@@ -162,23 +162,6 @@ class Agences
 
         return $agents;
 
-        /**
-         * Get agents data.
-         */
-        $this->dbconnect->setTable("agents");
-        $allAgents=array();
-        for($i=0; $i<count($agentsIds); $i++)
-        {
-            $this->dbconnect->where("agent_id","=",$agentsIds[$i]);
-            $a=$this->dbconnect->select();
-            if($a)
-            {
-                $allAgents[]=$a[0];
-            }
-
-        }
-
-        return $allAgents;
     }
 
 
