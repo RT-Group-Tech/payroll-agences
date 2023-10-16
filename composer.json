@@ -17,6 +17,13 @@
         "php": ">=8.0",
         "rtgroup/dbconnect": "dev-master",
         "rtgroup/payroll-adresses": "dev-master",
-        "rtgroup/http-router": "dev-master"
-    }
+        "rtgroup/http-router": "dev-master",
+        "rtgroup/payroll-baremes": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/RT-Group-Tech/payroll-baremes.git"
+        }
+    ]
 }

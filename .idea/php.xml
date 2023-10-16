@@ -7,6 +7,7 @@
       <path value="$PROJECT_DIR$/vendor/rtgroup/payroll-adresses" />
       <path value="$PROJECT_DIR$/vendor/rtgroup/http-router" />
       <path value="$PROJECT_DIR$/vendor/rtgroup/dbconnect" />
+      <path value="$PROJECT_DIR$/vendor/rtgroup/payroll-baremes" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

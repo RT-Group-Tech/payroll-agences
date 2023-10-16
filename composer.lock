@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69e369cb84ec274bc2fc0ab34745f062",
+    "content-hash": "5637ace098ff6281d60f62db6d6da95d",
     "packages": [
         {
             "name": "curl/curl",
@@ -180,6 +180,34 @@
                 "source": "https://github.com/RT-Group-Tech/payroll-adresses/tree/master"
             },
             "time": "2023-10-05T12:49:09+00:00"
+        },
+        {
+            "name": "rtgroup/payroll-baremes",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RT-Group-Tech/payroll-baremes.git",
+                "reference": "4759ad74b917c5fbcc8ab51fc9cb274b63638a00"
+            },
+            "require": {
+                "rtgroup/dbconnect": "dev-master",
+                "rtgroup/http-router": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rtgroup\\PayrollBaremes\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Chris Tenday",
+                    "email": "ctenday@gmail.com"
+                }
+            ],
+            "description": "Gestion & manipulation des baremes",
+            "time": "2023-10-16T14:48:17+00:00"
         }
     ],
     "packages-dev": [],
@@ -188,7 +216,8 @@
     "stability-flags": {
         "rtgroup/dbconnect": 20,
         "rtgroup/payroll-adresses": 20,
-        "rtgroup/http-router": 20
+        "rtgroup/http-router": 20,
+        "rtgroup/payroll-baremes": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

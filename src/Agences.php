@@ -6,6 +6,7 @@ use Rtgroup\Dbconnect\Dbconnect;
 use Rtgroup\HttpRouter\DataLoader;
 use Rtgroup\HttpRouter\HttpRequest;
 use Rtgroup\PayrollAdresses\Adresse;
+use Rtgroup\PayrollBaremes\Baremes;
 
 class Agences
 {
@@ -148,6 +149,7 @@ class Agences
 
         $agentsIds=array();
         $agents=[];
+        $baremes=new Baremes();
         for($i=count($affectations)-1; $i>=0; $i--)
         {
             /**
@@ -155,8 +157,16 @@ class Agences
              */
             if(!in_array($affectations[$i]['agent_id'],$agentsIds))
             {
+
+                /**
+                 * Get barème de l'agent.
+                 */
+                $affectations[$i]['bareme']=$baremes->getAgentBareme(agentId: $affectations[$i]['agent_id']);
+
                 $agentsIds[]=$affectations[$i]['agent_id'];
                 $agents[]=$affectations[$i];
+
+
             }
         }
 
